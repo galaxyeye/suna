@@ -201,3 +201,4 @@ rabbitmq_data
 
 backend/.test_token_compression.py
 backend/test_token_compression_data.py
+/node_modules/
