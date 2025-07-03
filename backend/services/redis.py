@@ -1,9 +1,11 @@
-import redis.asyncio as redis
 import os
-from dotenv import load_dotenv
-import asyncio
-from utils.logger import logger
 from typing import List, Any
+
+import asyncio
+import redis.asyncio as redis
+from dotenv import load_dotenv
+
+from utils.logger import logger
 from utils.retry import retry
 
 # Redis client and connection pool
@@ -26,25 +28,32 @@ def initialize():
     # Get Redis configuration
     redis_host = os.getenv("REDIS_HOST", "redis")
     redis_port = int(os.getenv("REDIS_PORT", 6379))
-    redis_password = os.getenv("REDIS_PASSWORD", "")
-    
+    redis_password = os.getenv("REDIS_PASSWORD", None)
+
     # Connection pool configuration
     max_connections = int(os.getenv("REDIS_MAX_CONNECTIONS", 1024))
     retry_on_timeout = not (os.getenv("REDIS_RETRY_ON_TIMEOUT", "True").lower() != "true")
 
-    logger.info(f"Initializing Redis connection pool to {redis_host}:{redis_port} with max {max_connections} connections")
+    logger.info(
+        f"Initializing Redis connection pool to {redis_host}:{redis_port} with max {max_connections} connections")
 
     # Create connection pool
+    # pool = redis.ConnectionPool(
+    #     host=redis_host,
+    #     port=redis_port,
+    #     password=redis_password,
+    #     decode_responses=True,
+    #     socket_timeout=15.0,
+    #     socket_connect_timeout=15.0,
+    #     retry_on_timeout=retry_on_timeout,
+    #     health_check_interval=30,
+    #     max_connections=max_connections,
+    # )
+
     pool = redis.ConnectionPool(
         host=redis_host,
         port=redis_port,
-        password=redis_password,
-        decode_responses=True,
-        socket_timeout=5.0,
-        socket_connect_timeout=5.0,
-        retry_on_timeout=retry_on_timeout,
-        health_check_interval=30,
-        max_connections=max_connections,
+        decode_responses=True
     )
 
     # Create Redis client from connection pool
@@ -82,12 +91,12 @@ async def close():
         logger.info("Closing Redis connection")
         await client.aclose()
         client = None
-    
+
     if pool:
         logger.info("Closing Redis connection pool")
         await pool.aclose()
         pool = None
-    
+
     _initialized = False
     logger.info("Redis connection and pool closed")
 
