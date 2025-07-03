@@ -7,7 +7,7 @@ stripe listen --forward-to localhost:8000/api/billing/webhook
 from fastapi import APIRouter, HTTPException, Depends, Request
 from typing import Optional, Dict, Tuple
 import stripe
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from utils.logger import logger
 from utils.config import config, EnvMode
 from services.supabase import DBConnection
@@ -157,7 +157,28 @@ async def create_stripe_customer(client, user_id: str, email: str) -> str:
     
     return customer.id
 
-async def get_user_subscription(user_id: str) -> Optional[Dict]:
+async def get_mock_user_subscription(user_id: str) -> Optional[Dict]:
+    """Get the current subscription for a user from Stripe."""
+    mock_subscription = SubscriptionStatus(
+        status='active',  # Mocking an active subscription
+        plan_name='mock_plan',  # Mocking a plan name
+        price_id=config.STRIPE_FREE_TIER_ID,  # Mocking a price ID
+        current_period_end=datetime.now(timezone.utc) + timedelta(days=30),  # Mocking a period end in 30 days
+        cancel_at_period_end=False,  # Mocking no cancellation at period end
+        trial_end=None,  # Mocking no trial end
+        minutes_limit=60,  # Mocking a limit of 60 minutes
+        cost_limit=50.0,  # Mocking a cost limit of $50
+        current_usage=1.0,  # Mocking no current usage
+        has_schedule=False,  # Mocking no scheduled changes
+        scheduled_plan_name=None,  # Mocking no scheduled plan name
+        scheduled_price_id=None,  # Mocking no scheduled price ID
+        scheduled_change_date=None  # Mocking no scheduled change date
+    )
+
+    # convert mock_subscription to dict
+    return mock_subscription.model_dump()
+
+async def get_user_subscription2(user_id: str) -> Optional[Dict]:
     """Get the current subscription for a user from Stripe."""
     try:
         # Get customer ID
@@ -460,7 +481,7 @@ async def get_allowed_models_for_user(client, user_id: str):
         List of model names allowed for the user's subscription tier.
     """
 
-    subscription = await get_user_subscription(user_id)
+    subscription = await get_mock_user_subscription(user_id)
     tier_name = 'free'
     
     if subscription:
@@ -511,7 +532,7 @@ async def check_billing_status(client, user_id: str) -> Tuple[bool, str, Optiona
         }
     
     # Get current subscription
-    subscription = await get_user_subscription(user_id)
+    subscription = await get_mock_user_subscription(user_id)
     # print("Current subscription:", subscription)
     
     # If no subscription, they can use free tier
@@ -576,7 +597,7 @@ async def create_checkout_session(
             raise HTTPException(status_code=400, detail="Price ID does not belong to the correct product.")
             
         # Check for existing subscription for our product
-        existing_subscription = await get_user_subscription(current_user_id)
+        existing_subscription = await get_mock_user_subscription(current_user_id)
         # print("Existing subscription for product:", existing_subscription)
         
         if existing_subscription:
@@ -930,14 +951,29 @@ async def create_portal_session(
         logger.error(f"Error creating portal session: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @router.get("/subscription")
 async def get_subscription(
+        current_user_id: str = Depends(get_current_user_id_from_jwt)
+):
+    """Get the current subscription status for the current user, including scheduled changes."""
+    try:
+        # Get subscription from Stripe (this helper already handles filtering/cleanup)
+        subscription = await get_mock_user_subscription(current_user_id)
+        # print("Subscription data for status:", subscription)
+        return subscription
+    except Exception as e:
+        logger.exception(f"Error getting subscription status for user {current_user_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail="Error retrieving subscription status.")
+
+@router.get("/subscription2")
+async def get_subscription2(
     current_user_id: str = Depends(get_current_user_id_from_jwt)
 ):
     """Get the current subscription status for the current user, including scheduled changes."""
     try:
         # Get subscription from Stripe (this helper already handles filtering/cleanup)
-        subscription = await get_user_subscription(current_user_id)
+        subscription = await get_mock_user_subscription(current_user_id)
         # print("Subscription data for status:", subscription)
         
         # Calculate current usage
@@ -1158,7 +1194,7 @@ async def get_available_models(
         free_tier_models = MODEL_ACCESS_TIERS.get('free', [])
         
         # Get subscription info for context
-        subscription = await get_user_subscription(current_user_id)
+        subscription = await get_mock_user_subscription(current_user_id)
         
         # Determine tier name from subscription
         tier_name = 'free'
