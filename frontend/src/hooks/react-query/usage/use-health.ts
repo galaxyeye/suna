@@ -9,7 +9,8 @@ export const useApiHealth = createQueryHook(
   checkApiHealth,
   {
     staleTime: 30 * 1000,
-    refetchInterval: 60 * 1000,
+    // refetchInterval: 60 * 1000,
+    refetchInterval: 600 * 1000,
     refetchOnWindowFocus: true,
     retry: 3,
   }

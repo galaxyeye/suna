@@ -57,7 +57,7 @@ export default function DashboardLayoutContent({
 
     checkHealth();
     // Check health every 30 seconds
-    const interval = setInterval(checkHealth, 30000);
+    const interval = setInterval(checkHealth, 10 * 30 * 1000);
     return () => clearInterval(interval);
   }, []);
 
