@@ -178,7 +178,7 @@ async def get_mock_user_subscription(user_id: str) -> Optional[Dict]:
     # convert mock_subscription to dict
     return mock_subscription.model_dump()
 
-async def get_user_subscription2(user_id: str) -> Optional[Dict]:
+async def get_user_subscription(user_id: str) -> Optional[Dict]:
     """Get the current subscription for a user from Stripe."""
     try:
         # Get customer ID
@@ -481,7 +481,7 @@ async def get_allowed_models_for_user(client, user_id: str):
         List of model names allowed for the user's subscription tier.
     """
 
-    subscription = await get_mock_user_subscription(user_id)
+    subscription = await get_user_subscription(user_id)
     tier_name = 'free'
     
     if subscription:
@@ -532,7 +532,7 @@ async def check_billing_status(client, user_id: str) -> Tuple[bool, str, Optiona
         }
     
     # Get current subscription
-    subscription = await get_mock_user_subscription(user_id)
+    subscription = await get_user_subscription(user_id)
     # print("Current subscription:", subscription)
     
     # If no subscription, they can use free tier
@@ -597,7 +597,7 @@ async def create_checkout_session(
             raise HTTPException(status_code=400, detail="Price ID does not belong to the correct product.")
             
         # Check for existing subscription for our product
-        existing_subscription = await get_mock_user_subscription(current_user_id)
+        existing_subscription = await get_user_subscription(current_user_id)
         # print("Existing subscription for product:", existing_subscription)
         
         if existing_subscription:
@@ -959,7 +959,7 @@ async def get_subscription(
     """Get the current subscription status for the current user, including scheduled changes."""
     try:
         # Get subscription from Stripe (this helper already handles filtering/cleanup)
-        subscription = await get_mock_user_subscription(current_user_id)
+        subscription = await get_user_subscription(current_user_id)
         # print("Subscription data for status:", subscription)
         return subscription
     except Exception as e:
@@ -973,7 +973,7 @@ async def get_subscription2(
     """Get the current subscription status for the current user, including scheduled changes."""
     try:
         # Get subscription from Stripe (this helper already handles filtering/cleanup)
-        subscription = await get_mock_user_subscription(current_user_id)
+        subscription = await get_user_subscription(current_user_id)
         # print("Subscription data for status:", subscription)
         
         # Calculate current usage
@@ -1194,7 +1194,7 @@ async def get_available_models(
         free_tier_models = MODEL_ACCESS_TIERS.get('free', [])
         
         # Get subscription info for context
-        subscription = await get_mock_user_subscription(current_user_id)
+        subscription = await get_user_subscription(current_user_id)
         
         # Determine tier name from subscription
         tier_name = 'free'
