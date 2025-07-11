@@ -51,10 +51,8 @@ dependencies = [
   "aiohttp==3.12.0",
 ]
 
-[project.optional-dependencies]
-dev = [
-  "daytona @ file://./third/daytona/sdk-python",
-]
+[tool.poetry.dependencies]
+platon-daytona = {git = "https://github.com/galaxyeye/daytona.git", subdirectory = "libs/sdk-python"}
 
 [project.urls]
 homepage = "https://www.suna.so/"
