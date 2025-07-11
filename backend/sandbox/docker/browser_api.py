@@ -364,8 +364,8 @@ class BrowserAutomation:
                 self.pages.append(page)
                 self.current_page_index = 0
                 # Navigate directly to google.com instead of about:blank
-                await page.goto("https://www.google.com", wait_until="domcontentloaded", timeout=30000)
-                print("Navigated to google.com")
+                await page.goto("https://www.baidu.com", wait_until="domcontentloaded", timeout=30000)
+                print("Navigated to baidu.com")
             
             try:
                 self.browser_context.on("page", self.handle_page_created)

@@ -7,12 +7,15 @@ from utils.config import Configuration
 load_dotenv()
 
 logger.debug("Initializing Daytona sandbox configuration")
+# daytona_config = DaytonaConfig(
+#     api_key=config.DAYTONA_API_KEY,
+#     server_url=config.DAYTONA_SERVER_URL,
+#     target=config.DAYTONA_TARGET
+# )
 daytona_config = DaytonaConfig(
-    api_key=config.DAYTONA_API_KEY,
-    server_url=config.DAYTONA_SERVER_URL,
-    target=config.DAYTONA_TARGET
+    api_key="dtn_d9074c7c7bd78b07d96403abaaad3c936a7ccbeb9cd9b9738e4bf3ed98a40173",
+    api_url="http://localhost:3000/api"
 )
-
 if daytona_config.api_key:
     logger.debug("Daytona API key configured successfully")
 else:
@@ -35,6 +38,8 @@ async def get_or_start_sandbox(sandbox_id: str):
     """Retrieve a sandbox by ID, check its state, and start it if needed."""
     
     logger.info(f"Getting or starting sandbox with ID: {sandbox_id}")
+
+    logger.info(daytona_config.api_key)
     
     try:
         sandbox = daytona.get(sandbox_id)
