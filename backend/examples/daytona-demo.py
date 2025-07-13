@@ -1,21 +1,20 @@
 import os
 import time
 
-import pytest
 from daytona import Daytona, DaytonaConfig, CreateSandboxFromImageParams, Resources, SessionExecuteRequest
 
-@pytest.mark.asyncio
-async def test_create_sandbox():
+
+def main():
     config = DaytonaConfig(
         api_key="dtn_7f8818a4d63cbd3ab1f582ec5919a6aca3abb70264d453e99bacda8f329712a7",
-        api_url="http://localhost:3000/api"
+        api_url="http://localhost:3000/api",
     )
     daytona = Daytona(config)
 
     params = CreateSandboxFromImageParams(
         image="galaxyeye88/suna:0.1.3",
         public=True,
-        labels={'id': "suna-test-browser"},
+        labels={"id": "example-browser"},
         env_vars={
             "CHROME_PERSISTENT_SESSION": "true",
             "RESOLUTION": "1024x768x24",
@@ -27,7 +26,7 @@ async def test_create_sandbox():
             "CHROME_USER_DATA": "",
             "CHROME_DEBUGGING_PORT": "9222",
             "CHROME_DEBUGGING_HOST": "localhost",
-            "CHROME_CDP": ""
+            "CHROME_CDP": "",
         },
         resources=Resources(
             cpu=2,
@@ -68,7 +67,7 @@ async def test_create_sandbox():
         print("Creating sandbox...")
         sandbox = daytona.create(params, timeout=300, on_snapshot_create_logs=print)
         # Save the sandbox id to a file
-        with open("../sandbox_id.txt", "w") as f:
+        with open("sandbox_id.txt", "w") as f:
             f.write(sandbox.id)
         print(f"Created sandbox with ID: {sandbox.id}")
     else:
@@ -101,14 +100,16 @@ async def test_create_sandbox():
         print(f"Session '{session_id}' already exists, reusing it.")
 
     # Execute supervisord command
-    sandbox.process.execute_session_command(session_id, SessionExecuteRequest(
-        command="exec /usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf",
-        run_async=True
-    ))
+    sandbox.process.execute_session_command(
+        session_id,
+        SessionExecuteRequest(
+            command="exec /usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf", run_async=True
+        ),
+    )
 
     time.sleep(10)
 
-    response = sandbox.process.exec('ps -ef', timeout=10)
+    response = sandbox.process.exec("ps -ef", timeout=10)
     print(response.result)
 
     session = sandbox.process.get_session(session_id)
@@ -116,15 +117,15 @@ async def test_create_sandbox():
 
     vnc_link = sandbox.get_preview_link(6080)
     website_link = sandbox.get_preview_link(8080)
-    vnc_url = vnc_link.url if hasattr(vnc_link, 'url') else str(vnc_link).split("url='")[1].split("'")[0]
-    website_url = website_link.url if hasattr(website_link, 'url') else str(website_link).split("url='")[1].split("'")[
-        0]
+    vnc_url = vnc_link.url if hasattr(vnc_link, "url") else str(vnc_link).split("url='")[1].split("'")[0]
+    website_url = (
+        website_link.url if hasattr(website_link, "url") else str(website_link).split("url='")[1].split("'")[0]
+    )
 
     print(f"VNC URL: {vnc_url}")
     print(f"Website URL: {website_url}")
 
     # Open the VNC URL in the default browser
-    import webbrowser
     # webbrowser.open(vnc_url)
 
     # Open the website URL in the default browser
@@ -132,3 +133,7 @@ async def test_create_sandbox():
 
     time.sleep(10)
     # daytona.delete(sandbox)
+
+
+if __name__ == "__main__":
+    main()

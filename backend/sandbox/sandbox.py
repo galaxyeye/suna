@@ -1,4 +1,4 @@
-from daytona_sdk import Daytona, DaytonaConfig, CreateSandboxFromImageParams, Sandbox, SessionExecuteRequest, Resources, SandboxState
+from daytona import Daytona, DaytonaConfig, CreateSandboxFromImageParams, Sandbox, SessionExecuteRequest, Resources, SandboxState
 from dotenv import load_dotenv
 from utils.logger import logger
 from utils.config import config
@@ -13,7 +13,7 @@ logger.debug("Initializing Daytona sandbox configuration")
 #     target=config.DAYTONA_TARGET
 # )
 daytona_config = DaytonaConfig(
-    api_key="dtn_d9074c7c7bd78b07d96403abaaad3c936a7ccbeb9cd9b9738e4bf3ed98a40173",
+    api_key="dtn_7f8818a4d63cbd3ab1f582ec5919a6aca3abb70264d453e99bacda8f329712a7",
     api_url="http://localhost:3000/api"
 )
 if daytona_config.api_key:

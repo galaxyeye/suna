@@ -5,4 +5,15 @@ python = "3.11.10"
 uv = "0.6.5"
 
 [env]
-PYTHONPATH = "{{config_root}}/backend"
+# 设置 Python 路径
+PYTHONPATH = "{{ config_root }}/backend"
+
+[tasks]
+# 安装后端依赖
+install-backend = "cd backend && uv sync"
+# 安装前端依赖
+install-frontend = "cd frontend && npm install && npm run dev"
+# 启动开发服务器
+dev = ["install-backend", "install-frontend"]
+# 运行测试
+test = "cd backend && python -m pytest"
