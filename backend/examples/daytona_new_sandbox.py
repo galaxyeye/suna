@@ -1,7 +1,7 @@
 import os
 import time
 
-from daytona import CreateSandboxFromImageParams, Daytona, DaytonaConfig, Resources, SessionExecuteRequest
+from platon_daytona import CreateSandboxFromImageParams, Daytona, DaytonaConfig, Resources, SessionExecuteRequest
 
 
 def main():
