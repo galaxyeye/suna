@@ -200,6 +200,10 @@ export function extractCommandData(
     const rawCommand = extractCommand(assistantContent) || extractCommand(toolContent);
     command = rawCommand
       ?.replace(/^suna@computer:~\$\s*/g, '')
+      ?.replace(/^pulsar@computer:~\$\s*/g, '')
+      ?.replace(/^galaxyeye@computer:~\$\s*/g, '')
+      ?.replace(/^platon@computer:~\$\s*/g, '')
+      ?.replace(/^platonai@computer:~\$\s*/g, '')
       ?.replace(/\\n/g, '')
       ?.replace(/\n/g, '')
       ?.trim() || null;

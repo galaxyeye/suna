@@ -1,11 +1,11 @@
 export const siteConfig = {
-  name: 'Kortix Suna',
-  url: 'https://suna.so/',
-  description: 'Kortix AI',
+  name: 'Pulsar Agents',
+  url: 'https://platon.ai/',
+  description: 'Platon AI',
   links: {
-    twitter: 'https://x.com/kortixai',
-    github: 'https://github.com/kortix-ai/',
-    linkedin: 'https://www.linkedin.com/company/kortix/',
+    twitter: 'https://x.com/galaxyeye88',
+    github: 'https://github.com/platonai/',
+    linkedin: 'https://www.linkedin.com/company/platonai/',
   },
 };
 

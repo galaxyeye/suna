@@ -4,17 +4,17 @@ import { siteConfig } from '@/lib/site';
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
-  keywords: ['Kortix Suna', 'AI', 'Agent'],
+  keywords: ['Pulsar Agents', 'AI', 'Agent', 'Platon AI', 'Platon', 'galaxyeye'],
   authors: [
     {
-      name: 'Kortix AI Corp',
-      url: 'https://kortix.ai',
+      name: 'Platon AI Corp',
+      url: 'https://platon.ai',
     },
   ],
-  creator: 'Kortix AI Corp',
+  creator: 'platon.ai',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'zh_CN',
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
-    creator: '@kortixai',
+    creator: '@galaxyeye88',
   },
   robots: {
     index: true,
