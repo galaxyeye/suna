@@ -66,7 +66,7 @@ export const siteConfig = {
     email: 'support@kortix.ai',
     twitter: 'https://x.com/kortixai',
     discord: 'https://discord.gg/kortixai',
-    github: 'https://github.com/PlatonAI/Suna',
+    github: 'https://github.com/PlatonAI/Pulsar Agents',
     instagram: 'https://instagram.com/kortixai',
   },
   nav: {
@@ -106,10 +106,10 @@ export const siteConfig = {
     ),
     badge: '100% OPEN SOURCE',
     githubUrl: 'https://github.com/kortix-ai/suna',
-    title: 'Suna, the AI Employee.',
+    title: 'Pulsar Agents, the AI Employee.',
     description:
-      'Suna by Platon AI Team – is a generalist AI Agent that acts on your behalf.',
-    inputPlaceholder: 'Ask Suna to...',
+      'Pulsar Agents by Platon AI Team – is a generalist AI Agent that acts on your behalf.',
+    inputPlaceholder: 'Ask Pulsar Agents to...',
   },
   cloudPricingItems: [
     {
@@ -144,7 +144,7 @@ export const siteConfig = {
       features: [
         '$20/month usage',
         'Private projects',
-        'Access to intelligent Model (Full Suna)',
+        'Access to intelligent Model (Full Pulsar Agents)',
       ],
       stripePriceId: config.SUBSCRIPTION_TIERS.TIER_2_20.priceId,
       yearlyStripePriceId: config.SUBSCRIPTION_TIERS.TIER_2_20_YEARLY.priceId,
@@ -165,7 +165,7 @@ export const siteConfig = {
       features: [
         '$50/month usage',
         'Private projects',
-        'Access to intelligent Model (Full Suna)',
+        'Access to intelligent Model (Full Pulsar Agents)',
       ],
       stripePriceId: config.SUBSCRIPTION_TIERS.TIER_6_50.priceId,
       yearlyStripePriceId: config.SUBSCRIPTION_TIERS.TIER_6_50_YEARLY.priceId,
@@ -185,7 +185,7 @@ export const siteConfig = {
       features: [
         '$100/month usage',
         'Private projects',
-        'Access to intelligent Model (Full Suna)',
+        'Access to intelligent Model (Full Pulsar Agents)',
         'Priority support',
       ],
       stripePriceId: config.SUBSCRIPTION_TIERS.TIER_12_100.priceId,
@@ -207,7 +207,7 @@ export const siteConfig = {
       features: [
         '$200/month usage',
         'Private projects',
-        'Access to intelligent Model (Full Suna)',
+        'Access to intelligent Model (Full Pulsar Agents)',
       ],
       stripePriceId: config.SUBSCRIPTION_TIERS.TIER_25_200.priceId,
       yearlyStripePriceId: config.SUBSCRIPTION_TIERS.TIER_25_200_YEARLY.priceId,
@@ -227,7 +227,7 @@ export const siteConfig = {
       features: [
         '$400/month usage',
         'Private projects',
-        'Access to intelligent Model (Full Suna)',
+        'Access to intelligent Model (Full Pulsar Agents)',
         'Priority support',
         'Custom integrations',
       ],
@@ -250,7 +250,7 @@ export const siteConfig = {
       features: [
         '$800/month usage',
         'Private projects',
-        'Access to intelligent Model (Full Suna)',
+        'Access to intelligent Model (Full Pulsar Agents)',
         'Priority support',
         'Custom integrations',
         'Dedicated account manager',
@@ -274,7 +274,7 @@ export const siteConfig = {
       features: [
         '$1000/month usage',
         'Private projects',
-        'Access to intelligent Model (Full Suna)',
+        'Access to intelligent Model (Full Pulsar Agents)',
         'Priority support',
         'Custom integrations',
         'Dedicated account manager',
@@ -504,7 +504,7 @@ export const siteConfig = {
         id: 2,
         title: 'AI Understanding & Planning',
         content:
-          'Suna analyzes your request, understands the context, and develops a structured plan to complete the task efficiently.',
+          'Pulsar Agents analyzes your request, understands the context, and develops a structured plan to complete the task efficiently.',
         image:
           'https://images.unsplash.com/photo-1686170287433-c95faf6d3608?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8fA%3D%3D',
       },
@@ -512,7 +512,7 @@ export const siteConfig = {
         id: 3,
         title: 'Autonomous Execution',
         content:
-          'Using its capabilities and integrations, Suna executes the task independently, handling any complexities along the way.',
+          'Using its capabilities and integrations, Pulsar Agents executes the task independently, handling any complexities along the way.',
         image:
           'https://images.unsplash.com/photo-1720378042271-60aff1e1c538?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D',
       },
@@ -520,7 +520,7 @@ export const siteConfig = {
         id: 4,
         title: 'Results & Learning',
         content:
-          'Suna delivers results and learns from each interaction, continuously improving its performance to better serve your needs.',
+          'Pulsar Agents delivers results and learns from each interaction, continuously improving its performance to better serve your needs.',
         image:
           'https://images.unsplash.com/photo-1666882990322-e7f3b8df4f75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D',
       },
@@ -536,14 +536,14 @@ export const siteConfig = {
         content: <FirstBentoAnimation />,
         title: 'Autonomous Task Execution',
         description:
-          'Experience true automation with Suna. Ask your AI Agent to complete tasks, research information, and handle complex workflows with minimal supervision.',
+          'Experience true automation with Pulsar Agents. Ask your AI Agent to complete tasks, research information, and handle complex workflows with minimal supervision.',
       },
       {
         id: 2,
         content: <SecondBentoAnimation />,
         title: 'Seamless Integrations',
         description:
-          'Connect Suna to your existing tools for a unified workflow. Boost productivity through AI-powered interconnected systems.',
+          'Connect Pulsar Agents to your existing tools for a unified workflow. Boost productivity through AI-powered interconnected systems.',
       },
       {
         id: 3,
@@ -557,21 +557,21 @@ export const siteConfig = {
         ),
         title: 'Intelligent Data Analysis',
         description:
-          "Transform raw data into actionable insights in seconds. Make better decisions with Suna's real-time, adaptive intelligence.",
+          "Transform raw data into actionable insights in seconds. Make better decisions with Pulsar Agents's real-time, adaptive intelligence.",
       },
       {
         id: 4,
         content: <FourthBentoAnimation once={false} />,
         title: 'Complete Customization',
         description:
-          'Tailor Suna to your specific needs. As an open source solution, you have full control over its capabilities, integrations, and implementation.',
+          'Tailor Pulsar Agents to your specific needs. As an open source solution, you have full control over its capabilities, integrations, and implementation.',
       },
     ],
   },
   benefits: [
     {
       id: 1,
-      text: "Automate everyday tasks with Suna's powerful AI capabilities.",
+      text: "Automate everyday tasks with Pulsar Agents's powerful AI capabilities.",
       image: '/Device-6.png',
     },
     {
@@ -581,7 +581,7 @@ export const siteConfig = {
     },
     {
       id: 3,
-      text: 'Improve focus on high-value work as Suna handles the routine.',
+      text: 'Improve focus on high-value work as Pulsar Agents handles the routine.',
       image: '/Device-8.png',
     },
     {
@@ -887,7 +887,7 @@ export const siteConfig = {
 
         title: 'Community Powered',
         description:
-          "Join a thriving community of developers and users continuously enhancing and expanding Suna's capabilities.",
+          "Join a thriving community of developers and users continuously enhancing and expanding Pulsar Agents's capabilities.",
       },
     ],
   },
@@ -918,7 +918,7 @@ export const siteConfig = {
           'Community support',
         ],
         description: 'Perfect for individual users and developers',
-        buttonText: 'Hire Suna',
+        buttonText: 'Hire Pulsar Agents',
         buttonColor: 'bg-accent text-primary',
         isPopular: false,
       },
@@ -1190,7 +1190,7 @@ export const siteConfig = {
       },
       {
         id: 4,
-        question: 'Can I integrate Suna with my existing tools?',
+        question: 'Can I integrate Pulsar Agents with my existing tools?',
         answer:
           'Yes, Pulsar Agents is designed to be highly compatible with popular tools and platforms. We offer APIs and pre-built integrations for seamless connection with your existing workflow tools and systems.',
       },
@@ -1198,7 +1198,7 @@ export const siteConfig = {
         id: 5,
         question: 'How can I contribute to Pulsar Agents?',
         answer:
-          'You can contribute to Pulsar Agents by submitting pull requests on GitHub, reporting bugs, suggesting new features, or helping with documentation. Join our Discord community to connect with other contributors and Hire Suna.',
+          'You can contribute to Pulsar Agents by submitting pull requests on GitHub, reporting bugs, suggesting new features, or helping with documentation. Join our Discord community to connect with other contributors and Hire Pulsar Agents.',
       },
       {
         id: 6,
@@ -1233,10 +1233,10 @@ export const siteConfig = {
         {
           id: 5,
           title: 'Documentation',
-          url: 'https://github.com/PlatonAI/Suna',
+          url: 'https://github.com/PlatonAI/Pulsar Agents',
         },
         { id: 7, title: 'Discord', url: 'https://discord.gg/Py6pCBUUPw' },
-        { id: 8, title: 'GitHub', url: 'https://github.com/PlatonAI/Suna' },
+        { id: 8, title: 'GitHub', url: 'https://github.com/PlatonAI/Pulsar Agents' },
       ],
     },
     {
@@ -1255,7 +1255,7 @@ export const siteConfig = {
         {
           id: 11,
           title: 'License Apache 2.0',
-          url: 'https://github.com/PlatonAI/Suna/blob/main/LICENSE',
+          url: 'https://github.com/PlatonAI/Pulsar Agents/blob/main/LICENSE',
         },
       ],
     },
