@@ -207,52 +207,55 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="w-full relative overflow-hidden">
+    <section id="hero" className="w-full relative overflow-hidden dark:bg-tech-grid">
       <div className="relative flex flex-col items-center w-full px-6">
-        {/* Left side flickering grid with gradient fades */}
-        <div className="absolute left-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-10 overflow-hidden">
-          {/* Horizontal fade from left to right */}
+        {/* Enhanced geometric background for dark mode */}
+        <div className="absolute inset-0 dark:bg-matrix-dots opacity-30 dark:opacity-100"></div>
+        
+        {/* Bold geometric frames for dark mode */}
+        <div className="hidden dark:block absolute left-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-5">
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-10" />
+          <div className="absolute top-1/4 left-8 w-32 h-32 border-2 border-white/10 rotate-45"></div>
+          <div className="absolute top-1/2 left-16 w-16 h-16 border border-white/20"></div>
+        </div>
+
+        <div className="hidden dark:block absolute right-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-5">
+          <div className="absolute inset-0 bg-gradient-to-l from-black via-black/50 to-transparent z-10" />
+          <div className="absolute top-1/3 right-8 w-24 h-24 border border-white/15 rotate-12"></div>
+          <div className="absolute top-2/3 right-16 w-40 h-40 border-2 border-white/10 -rotate-12"></div>
+        </div>
+
+        {/* Traditional flickering grid for light mode */}
+        <div className="dark:hidden absolute left-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background z-10" />
-
-          {/* Vertical fade from top */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background via-background/90 to-transparent z-10" />
-
-          {/* Vertical fade to bottom */}
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/90 to-transparent z-10" />
-
           <FlickeringGrid
             className="h-full w-full"
             squareSize={mounted && tablet ? 2 : 2.5}
             gridGap={mounted && tablet ? 2 : 2.5}
             color="var(--secondary)"
             maxOpacity={0.4}
-            flickerChance={isScrolling ? 0.01 : 0.03} // Low flickering when not scrolling
+            flickerChance={isScrolling ? 0.01 : 0.03}
           />
         </div>
 
-        {/* Right side flickering grid with gradient fades */}
-        <div className="absolute right-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-10 overflow-hidden">
-          {/* Horizontal fade from right to left */}
+        <div className="dark:hidden absolute right-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background z-10" />
-
-          {/* Vertical fade from top */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background via-background/90 to-transparent z-10" />
-
-          {/* Vertical fade to bottom */}
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/90 to-transparent z-10" />
-
           <FlickeringGrid
             className="h-full w-full"
             squareSize={mounted && tablet ? 2 : 2.5}
             gridGap={mounted && tablet ? 2 : 2.5}
             color="var(--secondary)"
             maxOpacity={0.4}
-            flickerChance={isScrolling ? 0.01 : 0.03} // Low flickering when not scrolling
+            flickerChance={isScrolling ? 0.01 : 0.03}
           />
         </div>
 
-        {/* Center content background with rounded bottom */}
-        <div className="absolute inset-x-1/4 top-0 h-[600px] md:h-[800px] -z-20 bg-background rounded-b-xl"></div>
+        {/* Center content background */}
+        <div className="absolute inset-x-1/4 top-0 h-[600px] md:h-[800px] -z-20 bg-background dark:bg-black/20 rounded-b-xl dark:backdrop-blur-sm"></div>
 
         <div className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
           {/* <p className="border border-border bg-accent rounded-full text-sm h-8 px-3 flex items-center gap-2">
@@ -264,7 +267,7 @@ export function HeroSection() {
             href={hero.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group border border-border/50 bg-background hover:bg-accent/20 hover:border-secondary/40 rounded-full text-sm h-8 px-3 flex items-center gap-2 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
+            className="group border border-border/50 bg-background hover:bg-accent/20 hover:border-secondary/40 dark:btn-minimal rounded-full text-sm h-8 px-3 flex items-center gap-2 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
           >
             {hero.badgeIcon}
             <span className="font-medium text-muted-foreground text-xs tracking-wide group-hover:text-primary transition-colors duration-300">
@@ -289,12 +292,12 @@ export function HeroSection() {
               </svg>
             </span>
           </Link>
-          <div className="flex flex-col items-center justify-center gap-5">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center">
-              <span className="text-secondary">Suna</span>
-              <span className="text-primary">, your AI Employee.</span>
+          <div className="flex flex-col items-center justify-center gap-5 dark:content-spotlight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center dark:text-stark">
+              <span className="text-secondary dark:text-white dark:font-bold">Suna</span>
+              <span className="text-primary dark:text-white/90">, your AI Employee.</span>
             </h1>
-            <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
+            <p className="text-base md:text-lg text-center text-muted-foreground dark:text-minimal font-medium text-balance leading-relaxed tracking-tight">
               {hero.description}
             </p>
           </div>
@@ -302,22 +305,22 @@ export function HeroSection() {
             <form className="w-full relative" onSubmit={handleSubmit}>
               {/* ChatGPT-like input with glow effect */}
               <div className="relative z-10">
-                <div className="flex items-center rounded-full border border-border bg-background/80 backdrop-blur px-4 shadow-lg transition-all duration-200 hover:border-secondary/50 focus-within:border-secondary/50 focus-within:shadow-[0_0_15px_rgba(var(--secondary),0.3)]">
+                <div className="flex items-center rounded-full border border-border bg-background/80 backdrop-blur px-4 shadow-lg transition-all duration-200 hover:border-secondary/50 focus-within:border-secondary/50 focus-within:shadow-[0_0_15px_rgba(var(--secondary),0.3)] dark:stark-border dark:bg-black/50 dark:focus-within:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                   <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder={hero.inputPlaceholder}
-                    className="flex-1 h-12 md:h-14 rounded-full px-2 bg-transparent focus:outline-none text-sm md:text-base py-2"
+                    className="flex-1 h-12 md:h-14 rounded-full px-2 bg-transparent focus:outline-none text-sm md:text-base py-2 dark:text-white dark:placeholder-white/60"
                     disabled={isSubmitting}
                   />
                   <button
                     type="submit"
                     className={`rounded-full p-2 md:p-3 transition-all duration-200 ${
                       inputValue.trim()
-                        ? 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-                        : 'bg-muted text-muted-foreground'
+                        ? 'bg-secondary text-secondary-foreground hover:bg-secondary/80 dark:btn-stark'
+                        : 'bg-muted text-muted-foreground dark:bg-white/10 dark:text-white/40'
                     }`}
                     disabled={!inputValue.trim() || isSubmitting}
                     aria-label="Submit"

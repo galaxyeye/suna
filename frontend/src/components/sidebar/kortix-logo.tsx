@@ -19,7 +19,7 @@ export function KortixLogo({ size = 24 }: KortixLogoProps) {
   return (
     <Image
         src="/kortix-symbol.svg"
-        alt="Kortix"
+        alt="Platon AI Team"
         width={size}
         height={size}
         className={`${mounted && theme === 'dark' ? 'invert' : ''} flex-shrink-0`}

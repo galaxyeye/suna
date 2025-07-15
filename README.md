@@ -159,4 +159,4 @@ We welcome contributions from the community! Please see our [Contributing Guide]
 
 ## License
 
-Kortix Suna is licensed under the Apache License, Version 2.0. See [LICENSE](./LICENSE) for the full license text.
+Pulsar Agents is licensed under the Apache License, Version 2.0. See [LICENSE](./LICENSE) for the full license text.
