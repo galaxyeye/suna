@@ -207,7 +207,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="w-full relative overflow-hidden dark:bg-tech-grid">
+    <section id="hero" className="w-full relative overflow-hidden bg-tech-grid">
       <div className="relative flex flex-col items-center w-full px-6">
         
         <div className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
@@ -220,7 +220,7 @@ export function HeroSection() {
             href={hero.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group border border-border/50 bg-background hover:bg-accent/20 hover:border-secondary/40 dark:btn-minimal rounded-full text-sm h-8 px-3 flex items-center gap-2 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
+            className="group border border-border/50 bg-background hover:bg-accent/20 hover:border-secondary/40 btn-minimal rounded-full text-sm h-8 px-3 flex items-center gap-2 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
           >
             {hero.badgeIcon}
             <span className="font-medium text-muted-foreground text-xs tracking-wide group-hover:text-primary transition-colors duration-300">
@@ -245,35 +245,35 @@ export function HeroSection() {
               </svg>
             </span>
           </Link>
-          <div className="flex flex-col items-center justify-center gap-5 dark:content-spotlight">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center dark:text-stark">
-              <span className="text-secondary dark:text-white dark:font-bold">Pulsar Agents</span>
-              <span className="text-primary dark:text-white/90">, your AI Employee.</span>
-            </h1>
-            <p className="text-base md:text-lg text-center text-muted-foreground dark:text-minimal font-medium text-balance leading-relaxed tracking-tight">
-              {hero.description}
-            </p>
-          </div>
+                      <div className="flex flex-col items-center justify-center gap-5 content-spotlight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-stark">
+                <span className="text-secondary dark:text-white light:text-black font-bold">Pulsar Agents</span>
+                <span className="text-primary dark:text-white/90 light:text-black/90">, your AI Employee.</span>
+              </h1>
+              <p className="text-base md:text-lg text-center text-muted-foreground text-minimal font-medium text-balance leading-relaxed tracking-tight">
+                {hero.description}
+              </p>
+            </div>
           <div className="flex items-center w-full max-w-xl gap-2 flex-wrap justify-center">
             <form className="w-full relative" onSubmit={handleSubmit}>
               {/* ChatGPT-like input with glow effect */}
               <div className="relative z-10">
-                <div className="flex items-center rounded-full border border-border bg-background/80 backdrop-blur px-4 shadow-lg transition-all duration-200 hover:border-secondary/50 focus-within:border-secondary/50 focus-within:shadow-[0_0_15px_rgba(var(--secondary),0.3)] dark:stark-border dark:bg-black/50 dark:focus-within:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                <div className="flex items-center rounded-full border border-border bg-background/80 backdrop-blur px-4 shadow-lg transition-all duration-200 hover:border-secondary/50 focus-within:border-secondary/50 focus-within:shadow-[0_0_15px_rgba(var(--secondary),0.3)] stark-border dark:bg-black/50 light:bg-white/50 dark:focus-within:shadow-[0_0_20px_rgba(255,255,255,0.2)] light:focus-within:shadow-[0_0_20px_rgba(0,0,0,0.2)]">
                   <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder={hero.inputPlaceholder}
-                    className="flex-1 h-12 md:h-14 rounded-full px-2 bg-transparent focus:outline-none text-sm md:text-base py-2 dark:text-white dark:placeholder-white/60"
+                    className="flex-1 h-12 md:h-14 rounded-full px-2 bg-transparent focus:outline-none text-sm md:text-base py-2 dark:text-white dark:placeholder-white/60 light:text-black light:placeholder-black/60"
                     disabled={isSubmitting}
                   />
                   <button
                     type="submit"
                     className={`rounded-full p-2 md:p-3 transition-all duration-200 ${
                       inputValue.trim()
-                        ? 'bg-secondary text-secondary-foreground hover:bg-secondary/80 dark:btn-stark'
-                        : 'bg-muted text-muted-foreground dark:bg-white/10 dark:text-white/40'
+                        ? 'bg-secondary text-secondary-foreground hover:bg-secondary/80 btn-stark'
+                        : 'bg-muted text-muted-foreground dark:bg-white/10 dark:text-white/40 light:bg-black/10 light:text-black/40'
                     }`}
                     disabled={!inputValue.trim() || isSubmitting}
                     aria-label="Submit"

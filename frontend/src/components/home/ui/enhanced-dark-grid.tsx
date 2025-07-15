@@ -33,20 +33,20 @@ export const EnhancedDarkGrid: React.FC<EnhancedDarkGridProps> = ({
   }, []);
 
   const animateGrid = useCallback(() => {
-    if (!animated || !isDark || !containerRef.current) return;
+    if (!animated || !containerRef.current) return;
 
     const grid = containerRef.current;
     const currentTime = Date.now();
     
-    // Subtle animation effect for dark mode
+    // Subtle breathing animation for both light and dark modes
     const opacity = 0.5 + Math.sin(currentTime * 0.001) * 0.3;
     grid.style.opacity = opacity.toString();
 
     animationRef.current = requestAnimationFrame(animateGrid);
-  }, [animated, isDark]);
+  }, [animated]);
 
   useEffect(() => {
-    if (animated && isDark) {
+    if (animated) {
       animationRef.current = requestAnimationFrame(animateGrid);
     }
     
@@ -55,13 +55,11 @@ export const EnhancedDarkGrid: React.FC<EnhancedDarkGridProps> = ({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [animated, isDark, animateGrid]);
+  }, [animated, animateGrid]);
 
   if (!mounted) return null;
 
   const getPatternClass = () => {
-    if (!isDark) return '';
-    
     switch (pattern) {
       case 'dots':
         return 'bg-minimal-dots';
@@ -78,16 +76,16 @@ export const EnhancedDarkGrid: React.FC<EnhancedDarkGridProps> = ({
     }
   };
 
-  const intensityStyle = isDark ? {
+  const intensityStyle = {
     filter: `opacity(${intensity})`,
-  } : {};
+  };
 
   return (
     <div
       ref={containerRef}
       className={cn(
         'absolute inset-0 w-full h-full pointer-events-none',
-        isDark && getPatternClass(),
+        getPatternClass(),
         className
       )}
       style={intensityStyle}
@@ -160,16 +158,25 @@ export const MinimalistCard: React.FC<{
 
   if (!mounted) return <div className={className}>{children}</div>;
 
-  const darkModeClasses = theme === 'dark' ? {
-    default: 'bg-card border-border',
-    bold: 'bg-black border-white border-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]',
-    minimal: 'bg-transparent border-white/20 border'
-  } : {};
+  const themeClasses = {
+    dark: {
+      default: 'bg-card border-border',
+      bold: 'bg-black border-white border-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]',
+      minimal: 'bg-transparent border-white/20 border'
+    },
+    light: {
+      default: 'bg-card border-border',
+      bold: 'bg-white border-black border-2 shadow-[0_0_20px_rgba(0,0,0,0.1)]',
+      minimal: 'bg-transparent border-black/20 border'
+    }
+  };
+
+  const currentTheme = theme === 'dark' ? 'dark' : 'light';
 
   return (
     <div className={cn(
       'rounded-lg transition-all duration-200',
-      theme === 'dark' ? darkModeClasses[variant] : 'bg-card border border-border',
+      themeClasses[currentTheme][variant],
       className
     )}>
       {children}
