@@ -69,7 +69,7 @@ To set up a custom Daytona service, you generally need to follow these steps:
    You can modify ports, database parameters, etc. as needed.
 
 4. **Connect with local SDK**  
-   In your local Python project, configure `DAYTONA_API_KEY` and `DAYTONA_SERVER_URL` to point to your local service (such as `http://localhost:8080`).
+   In your local Python project, configure `DAYTONA_API_KEY` and `DAYTONA_API_URL` to point to your local service (such as `http://localhost:8080`).
 
 5. **Verify service availability**  
    Use a browser or Postman to access `http://localhost:8080` to confirm the service is running.

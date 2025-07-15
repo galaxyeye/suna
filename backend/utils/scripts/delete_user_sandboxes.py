@@ -102,7 +102,7 @@ async def main():
     
     # Print environment info
     print(f"Environment Mode: {os.getenv('ENV_MODE', 'Not set')}")
-    print(f"Daytona Server: {os.getenv('DAYTONA_SERVER_URL', 'Not set')}")
+    print(f"Daytona Server: {os.getenv('DAYTONA_API_URL', 'Not set')}")
     
     try:
         # Query projects with sandboxes

@@ -122,7 +122,7 @@ def load_existing_env_vars():
         },
         "daytona": {
             "DAYTONA_API_KEY": backend_env.get("DAYTONA_API_KEY", ""),
-            "DAYTONA_SERVER_URL": backend_env.get("DAYTONA_SERVER_URL", ""),
+            "DAYTONA_API_URL": backend_env.get("DAYTONA_API_URL", ""),
             "DAYTONA_TARGET": backend_env.get("DAYTONA_TARGET", ""),
         },
         "llm": {
@@ -618,9 +618,9 @@ class SetupWizard:
         )
 
         # Set defaults if not already configured
-        if not self.env_vars["daytona"]["DAYTONA_SERVER_URL"]:
+        if not self.env_vars["daytona"]["DAYTONA_API_URL"]:
             self.env_vars["daytona"][
-                "DAYTONA_SERVER_URL"
+                "DAYTONA_API_URL"
             ] = "https://app.daytona.io/api"
         if not self.env_vars["daytona"]["DAYTONA_TARGET"]:
             self.env_vars["daytona"]["DAYTONA_TARGET"] = "us"

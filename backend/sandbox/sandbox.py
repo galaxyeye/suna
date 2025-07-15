@@ -10,7 +10,7 @@ load_dotenv()
 logger.debug("Initializing Daytona sandbox configuration")
 # daytona_config = DaytonaConfig(
 #     api_key=config.DAYTONA_API_KEY,
-#     server_url=config.DAYTONA_SERVER_URL,
+#     server_url=config.DAYTONA_API_URL,
 #     target=config.DAYTONA_TARGET
 # )
 daytona_config = DaytonaConfig(

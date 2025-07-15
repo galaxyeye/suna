@@ -199,7 +199,7 @@ class Configuration:
     
     # Daytona sandbox configuration
     DAYTONA_API_KEY: str
-    DAYTONA_SERVER_URL: str
+    DAYTONA_API_URL: str
     DAYTONA_TARGET: str
     
     # Search and other API keys

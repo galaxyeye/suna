@@ -222,7 +222,7 @@ class TestSetupWizard(unittest.TestCase):
                 "rapidapi": {"RAPID_API_KEY": "test_rapid"},
                 "daytona": {
                     "DAYTONA_API_KEY": "test_daytona",
-                    "DAYTONA_SERVER_URL": "https://app.daytona.io/api",
+                    "DAYTONA_API_URL": "https://app.daytona.io/api",
                     "DAYTONA_TARGET": "us",
                 },
             }

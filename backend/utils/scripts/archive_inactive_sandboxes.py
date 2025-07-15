@@ -13,7 +13,7 @@ This script:
 Make sure your environment variables are properly set:
 - SUPABASE_URL
 - SUPABASE_SERVICE_ROLE_KEY
-- DAYTONA_SERVER_URL
+- DAYTONA_API_URL
 """
 
 import asyncio
@@ -254,7 +254,7 @@ async def main():
     
     # Print environment info
     print(f"Environment Mode: {os.getenv('ENV_MODE', 'Not set')}")
-    print(f"Daytona Server: {os.getenv('DAYTONA_SERVER_URL', 'Not set')}")
+    print(f"Daytona Server: {os.getenv('DAYTONA_API_URL', 'Not set')}")
     
     try:
         # Initialize global DB connection
