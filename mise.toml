@@ -10,10 +10,20 @@ PYTHONPATH = "{{ config_root }}/backend"
 
 [tasks]
 # 安装后端依赖
-install-backend = "cd backend && uv sync"
+install-backend = { run = "uv sync", dir = "backend" }
 # 安装前端依赖
-install-frontend = "cd frontend && npm install && npm run dev"
-# 启动开发服务器
-dev = ["install-backend", "install-frontend"]
+install-frontend = { run = "npm install", dir = "frontend" }
+# 启动基础设施 (Redis + RabbitMQ)
+start-infrastructure = { run = "docker compose up redis rabbitmq -d", dir = "." }
+# 启动前端开发服务器
+start-frontend = { run = "npm run dev", dir = "frontend" }
+# 启动后端API服务器
+start-backend = { run = "python api.py", dir = "backend" }
+# 启动后台工作进程
+start-worker = { run = "python -m dramatiq run_agent_background", dir = "backend" }
+# 启动开发服务器 (安装依赖 + 启动前端)
+dev = ["install-backend", "install-frontend", "start-frontend"]
+# 启动完整服务 (基础设施 + 前端 + 后端 + 工作进程)
+start-all = ["install-backend", "install-frontend", "start-infrastructure", "start-frontend", "start-backend", "start-worker"]
 # 运行测试
-test = "cd backend && python -m pytest"
+test = { run = "python -m pytest", dir = "backend" }

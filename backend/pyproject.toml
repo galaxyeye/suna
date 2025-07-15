@@ -67,7 +67,7 @@ dependencies = [
 
 [project.urls]
 homepage = "https://www.suna.so/"
-repository = "https://github.com/kortix-ai/suna"
+repository = "https://github.com/galaxyeye/suna"
 
 [tool.uv]
 package = false
