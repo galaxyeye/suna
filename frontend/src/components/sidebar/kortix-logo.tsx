@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-interface KortixLogoProps {
+interface PlatonLogoProps {
   size?: number;
 }
-export function KortixLogo({ size = 24 }: KortixLogoProps) {
+export function PlatonLogo({ size = 24 }: PlatonLogoProps) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -18,7 +18,7 @@ export function KortixLogo({ size = 24 }: KortixLogoProps) {
 
   return (
     <Image
-        src="/kortix-symbol.svg"
+        src="/platon-logo.svg"
         alt="Platon AI Team"
         width={size}
         height={size}

@@ -209,54 +209,7 @@ export function HeroSection() {
   return (
     <section id="hero" className="w-full relative overflow-hidden dark:bg-tech-grid">
       <div className="relative flex flex-col items-center w-full px-6">
-        {/* Enhanced geometric background for dark mode */}
-        <div className="absolute inset-0 dark:bg-matrix-dots opacity-30 dark:opacity-100"></div>
         
-        {/* Bold geometric frames for dark mode */}
-        <div className="hidden dark:block absolute left-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-5">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-10" />
-          <div className="absolute top-1/4 left-8 w-32 h-32 border-2 border-white/10 rotate-45"></div>
-          <div className="absolute top-1/2 left-16 w-16 h-16 border border-white/20"></div>
-        </div>
-
-        <div className="hidden dark:block absolute right-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-5">
-          <div className="absolute inset-0 bg-gradient-to-l from-black via-black/50 to-transparent z-10" />
-          <div className="absolute top-1/3 right-8 w-24 h-24 border border-white/15 rotate-12"></div>
-          <div className="absolute top-2/3 right-16 w-40 h-40 border-2 border-white/10 -rotate-12"></div>
-        </div>
-
-        {/* Traditional flickering grid for light mode */}
-        <div className="dark:hidden absolute left-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background z-10" />
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background via-background/90 to-transparent z-10" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/90 to-transparent z-10" />
-          <FlickeringGrid
-            className="h-full w-full"
-            squareSize={mounted && tablet ? 2 : 2.5}
-            gridGap={mounted && tablet ? 2 : 2.5}
-            color="var(--secondary)"
-            maxOpacity={0.4}
-            flickerChance={isScrolling ? 0.01 : 0.03}
-          />
-        </div>
-
-        <div className="dark:hidden absolute right-0 top-0 h-[600px] md:h-[800px] w-1/3 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background z-10" />
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background via-background/90 to-transparent z-10" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/90 to-transparent z-10" />
-          <FlickeringGrid
-            className="h-full w-full"
-            squareSize={mounted && tablet ? 2 : 2.5}
-            gridGap={mounted && tablet ? 2 : 2.5}
-            color="var(--secondary)"
-            maxOpacity={0.4}
-            flickerChance={isScrolling ? 0.01 : 0.03}
-          />
-        </div>
-
-        {/* Center content background */}
-        <div className="absolute inset-x-1/4 top-0 h-[600px] md:h-[800px] -z-20 bg-background dark:bg-black/20 rounded-b-xl dark:backdrop-blur-sm"></div>
-
         <div className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
           {/* <p className="border border-border bg-accent rounded-full text-sm h-8 px-3 flex items-center gap-2">
             {hero.badgeIcon}
@@ -339,9 +292,8 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-      {/* <div className="mb-10 max-w-4xl mx-auto">
-        <HeroVideoSection />
-      </div> */}
+      <div className="mb-10 pt-10 max-w-4xl mx-auto">
+      </div>
 
       {/* Auth Dialog */}
       <Dialog open={authDialogOpen} onOpenChange={setAuthDialogOpen}>
@@ -360,7 +312,7 @@ export function HeroSection() {
               </button> */}
             </div>
             <DialogDescription className="text-muted-foreground">
-              Sign in or create an account to talk with Pulsar Agents
+              Sign in or create an account to talk with Suna
             </DialogDescription>
           </DialogHeader>
 

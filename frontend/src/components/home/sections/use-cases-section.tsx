@@ -28,7 +28,7 @@ export function UseCasesSection() {
       id="use-cases"
       className="flex flex-col items-center justify-center gap-10 pb-10 w-full relative"
     >
-      <SectionHeader>
+      {/* <SectionHeader>
         <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance">
           See Pulsar Agents in action
         </h2>
@@ -36,7 +36,7 @@ export function UseCasesSection() {
           Explore real-world examples of how Pulsar Agents completes complex tasks
           autonomously
         </p>
-      </SectionHeader>
+      </SectionHeader> */}
 
       <div className="relative w-full h-full">
         <div className="grid min-[650px]:grid-cols-2 min-[900px]:grid-cols-3 min-[1200px]:grid-cols-4 gap-4 w-full max-w-6xl mx-auto px-6">
@@ -76,7 +76,7 @@ export function UseCasesSection() {
                     <img
                       src={
                         useCase.image ||
-                        `https://placehold.co/800x400/f5f5f5/666666?text=Pulsar Agents+${useCase.title.split(' ').join('+')}`
+                        `https://placehold.co/800x400/f5f5f5/666666?text=${useCase.title.split(' ').join('+')}`
                       }
                       alt={`Pulsar Agents ${useCase.title}`}
                       className="w-full h-full object-cover"

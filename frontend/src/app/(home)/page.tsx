@@ -23,7 +23,7 @@ export default function Home() {
           {/* <QuoteSection /> */}
           {/* <FeatureSection /> */}
           {/* <GrowthSection /> */}
-          <OpenSourceSection />
+          {/* <OpenSourceSection /> */}
           <div className='flex flex-col items-center px-4'>
             <PricingSection />
           </div>

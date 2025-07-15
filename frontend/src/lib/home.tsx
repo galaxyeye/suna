@@ -63,11 +63,10 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
   keywords: ['AI Agent', 'Generalist AI', 'Open Source AI', 'Autonomous Agent'],
   links: {
-    email: 'support@kortix.ai',
-    twitter: 'https://x.com/kortixai',
-    discord: 'https://discord.gg/kortixai',
-    github: 'https://github.com/PlatonAI/Pulsar Agents',
-    instagram: 'https://instagram.com/kortixai',
+    email: 'galaxyeye@lve.cn',
+    twitter: 'https://x.com/galaxyeye88',
+    github: 'https://github.com/galaxyeye/suna',
+    weibo: 'https://weibo.com/galaxyeye',
   },
   nav: {
     links: [
@@ -104,11 +103,11 @@ export const siteConfig = {
         />
       </svg>
     ),
-    badge: '100% OPEN SOURCE',
-    githubUrl: 'https://github.com/kortix-ai/suna',
+    badge: 'OPEN SOURCE',
+    githubUrl: 'https://github.com/galaxyeye/suna',
     title: 'Pulsar Agents, the AI Employee.',
     description:
-      'Pulsar Agents by Platon AI Team – is a generalist AI Agent that acts on your behalf.',
+      'Pulsar Agents by Platon AI Team',
     inputPlaceholder: 'Ask Pulsar Agents to...',
   },
   cloudPricingItems: [
@@ -1211,7 +1210,7 @@ export const siteConfig = {
   ctaSection: {
     id: 'cta',
     title: 'Start Using Pulsar Agents Today',
-    backgroundImage: '/holo.png',
+    // backgroundImage: '/holo.png',
     button: {
       text: 'Get Started for free',
       href: '/auth',
@@ -1220,11 +1219,11 @@ export const siteConfig = {
   },
   footerLinks: [
     {
-      title: 'Kortix',
+      title: 'Pulsar Agents',
       links: [
-        { id: 1, title: 'About', url: 'https://kortix.ai' },
-        { id: 3, title: 'Contact', url: 'mailto:hey@kortix.ai' },
-        { id: 4, title: 'Careers', url: 'https://kortix.ai/careers' },
+        { id: 1, title: 'About', url: 'https://platon.ai' },
+        { id: 3, title: 'Contact', url: 'mailto:galaxyeye@live.cn' },
+        { id: 4, title: 'Careers', url: 'mailto:galaxyeye@live.cn' },
       ],
     },
     {
@@ -1233,29 +1232,19 @@ export const siteConfig = {
         {
           id: 5,
           title: 'Documentation',
-          url: 'https://github.com/PlatonAI/Pulsar Agents',
+          url: 'https://github.com/galaxyeye/suna',
         },
-        { id: 7, title: 'Discord', url: 'https://discord.gg/Py6pCBUUPw' },
-        { id: 8, title: 'GitHub', url: 'https://github.com/PlatonAI/Pulsar Agents' },
+        // { id: 7, title: 'Discord', url: 'https://discord.gg/Py6pCBUUPw' },
+        { id: 8, title: 'GitHub', url: 'https://github.com/galaxyeye/suna' },
       ],
     },
     {
       title: 'Legal',
       links: [
         {
-          id: 9,
-          title: 'Privacy Policy',
-          url: 'https://suna.so/legal?tab=privacy',
-        },
-        {
-          id: 10,
-          title: 'Terms of Service',
-          url: 'https://suna.so/legal?tab=terms',
-        },
-        {
           id: 11,
           title: 'License Apache 2.0',
-          url: 'https://github.com/PlatonAI/Pulsar Agents/blob/main/LICENSE',
+          url: 'https://github.com/galaxyeye/suna/blob/main/LICENSE',
         },
       ],
     },
