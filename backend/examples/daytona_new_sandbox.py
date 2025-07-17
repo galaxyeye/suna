@@ -1,12 +1,15 @@
 import os
 import time
 
-from platon_daytona import CreateSandboxFromImageParams, Daytona, DaytonaConfig, Resources, SessionExecuteRequest
+from daytona import CreateSandboxFromImageParams, Daytona, DaytonaConfig, Resources, SessionExecuteRequest
+from dotenv import load_dotenv
 
+load_dotenv(override=True, verbose=True)
 
 def main():
+    api_key = os.getenv("DAYTONA_API_KEY")
     config = DaytonaConfig(
-        api_key="dtn_7f8818a4d63cbd3ab1f582ec5919a6aca3abb70264d453e99bacda8f329712a7",
+        api_key=api_key,
         api_url="http://localhost:3000/api",
     )
     daytona = Daytona(config)
@@ -98,9 +101,12 @@ def main():
     print(f"VNC URL: {vnc_url}")
     print(f"Website URL: {website_url}")
 
-    time.sleep(10)
-    daytona.delete(sandbox)
+    # Wait for user input to exit
+    input("\nPress any key to delete the sandbox and exit...")
 
+    print("Deleting sandbox...")
+    daytona.delete(sandbox)
+    print("Sandbox deleted successfully.")
 
 if __name__ == "__main__":
     main()

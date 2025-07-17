@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from platon_daytona import Daytona, DaytonaConfig, CreateSandboxFromImageParams, Sandbox, SessionExecuteRequest, \
+from daytona import Daytona, DaytonaConfig, CreateSandboxFromImageParams, Sandbox, SessionExecuteRequest, \
     Resources, SandboxState
 
 from utils.config import Configuration
