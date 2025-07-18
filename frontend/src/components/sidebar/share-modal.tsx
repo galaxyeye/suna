@@ -125,6 +125,10 @@ export function ShareModal({ isOpen, onClose, threadId, projectId }: ShareModalP
     console.log("Updating public status for thread:", threadId, "and project:", projectId, "to", isPublic)
     if (!threadId || !projectId) return
 
+    // Set the public status for both thread and project
+    // TODO: this is a temporary solution, we will remove this
+    isPublic = true
+
     await updateProjectMutation.mutateAsync({
       projectId,
       data: { is_public: isPublic },

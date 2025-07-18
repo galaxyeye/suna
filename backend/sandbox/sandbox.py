@@ -1,22 +1,26 @@
+import os
+
 from dotenv import load_dotenv
 from daytona import Daytona, DaytonaConfig, CreateSandboxFromImageParams, Sandbox, SessionExecuteRequest, \
     Resources, SandboxState
 
-from utils.config import Configuration
+from utils.config import Configuration, config
 from utils.logger import logger
 
 load_dotenv()
 
 logger.debug("Initializing Daytona sandbox configuration")
-# daytona_config = DaytonaConfig(
-#     api_key=config.DAYTONA_API_KEY,
-#     server_url=config.DAYTONA_API_URL,
-#     target=config.DAYTONA_TARGET
-# )
 daytona_config = DaytonaConfig(
-    api_key="dtn_7f8818a4d63cbd3ab1f582ec5919a6aca3abb70264d453e99bacda8f329712a7",
-    api_url="http://localhost:3000/api"
+    api_key=config.DAYTONA_API_KEY,
+    server_url=config.DAYTONA_API_URL,
+    target=config.DAYTONA_TARGET
 )
+
+# api_key=os.getenv("DAYTONA_API_KEY")
+# daytona_config = DaytonaConfig(
+#     api_key=api_key,
+#     api_url="http://localhost:3000/api"
+# )
 if daytona_config.api_key:
     logger.debug("Daytona API key configured successfully")
 else:

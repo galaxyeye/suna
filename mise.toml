@@ -17,8 +17,8 @@ install-frontend = { run = "npm install", dir = "frontend" }
 start-infrastructure = { run = "docker compose up redis rabbitmq -d", dir = "." }
 # 启动前端开发服务器
 start-frontend = { run = "npm run dev", dir = "frontend" }
-# 启动后端API服务器
-start-backend = { run = "uv run api.py", dir = "backend" }
+# 启动后端API服务器 (支持热重启)
+start-backend = { run = "uv run uvicorn api:app --host 0.0.0.0 --port 8000 --reload", dir = "backend" }
 # 启动后台工作进程
 start-worker = { run = "uv run dramatiq run_agent_background", dir = "backend" }
 # 启动完整服务 (基础设施 + 前端 + 后端 + 工作进程)
