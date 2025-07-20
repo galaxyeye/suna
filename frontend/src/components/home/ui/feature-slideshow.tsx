@@ -178,7 +178,7 @@ export const Feature = ({
         setCurrentIndex(newIndex);
       };
 
-      carousel.addEventListener('scroll', handleScroll);
+      carousel.addEventListener('scroll', handleScroll, { passive: true });
       return () => carousel.removeEventListener('scroll', handleScroll);
     }
   }, [featureItems.length]);
