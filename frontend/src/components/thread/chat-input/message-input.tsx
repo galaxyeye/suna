@@ -122,6 +122,47 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
       }
     };
 
+    // CSS class variables for better readability
+    const textareaClasses = [
+      'w-full bg-background/50 dark:bg-background/70',
+      'border-2 border-primary/20 dark:border-primary/30',
+      'shadow-md focus-visible:ring-2 focus-visible:ring-primary/50 dark:focus-visible:ring-primary/60',
+      'focus-visible:border-primary/60 dark:focus-visible:border-primary/70',
+      'px-4 py-3 text-base min-h-[48px] max-h-[200px]',
+      'overflow-y-auto resize-none rounded-xl backdrop-blur-sm',
+      'font-medium placeholder:text-muted-foreground/70',
+      'transition-all duration-200 hover:border-primary/30 dark:hover:border-primary/40',
+      isDraggingOver ? 'opacity-40 border-primary/40 dark:border-primary/50' : '',
+    ].filter(Boolean).join(' ');
+
+    const upgradeTextClasses = [
+      'text-sm text-amber-500 dark:text-amber-400',
+      'hidden sm:block cursor-pointer',
+      'hover:text-amber-600 dark:hover:text-amber-300',
+      'font-medium transition-colors'
+    ].join(' ');
+
+    const submitButtonClasses = [
+      'w-9 h-9 flex-shrink-0 self-end',
+      'bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90',
+      'shadow-lg border-2 border-primary/20 dark:border-primary/30',
+      'hover:border-primary/40 dark:hover:border-primary/50',
+      'transition-all duration-200 rounded-xl',
+      isAgentRunning ? 'bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-red-400 dark:border-red-500' : '',
+      (!value.trim() && uploadedFiles.length === 0 && !isAgentRunning) ||
+        loading ||
+        (disabled && !isAgentRunning)
+        ? 'opacity-50 cursor-not-allowed'
+        : 'hover:scale-105 active:scale-95',
+    ].filter(Boolean).join(' ');
+
+    const mobileUpgradeClasses = [
+      'text-xs text-amber-500 dark:text-amber-400',
+      'px-3 py-1.5 bg-amber-50 dark:bg-amber-900/20',
+      'rounded-full border border-amber-200 dark:border-amber-800',
+      'font-medium'
+    ].join(' ');
+
     return (
       <div className="relative flex flex-col w-full h-auto gap-4 justify-between">
 
@@ -132,15 +173,11 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
             onChange={onChange}
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
-            className={cn(
-              'w-full bg-transparent dark:bg-transparent border-none shadow-none focus-visible:ring-0 px-2 py-1 text-base min-h-[40px] max-h-[200px] overflow-y-auto resize-none',
-              isDraggingOver ? 'opacity-40' : '',
-            )}
+            className={textareaClasses}
             disabled={loading || (disabled && !isAgentRunning)}
             rows={2}
           />
         </div>
-
 
         <div className="flex items-center justify-between mt-1 ml-3 mb-1 pr-2">
           <div className="flex items-center gap-3">
@@ -160,12 +197,12 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
             )}
 
           </div>
-          
+
           {subscriptionStatus === 'no_subscription' && !isLocalMode() &&
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
-                  <p role='button' className='text-sm text-amber-500 hidden sm:block cursor-pointer' onClick={() => setBillingModalOpen(true)}>Upgrade for full performance</p>
+                  <p role='button' className={upgradeTextClasses} onClick={() => setBillingModalOpen(true)}>Upgrade for full performance</p>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>The free tier is severely limited by inferior models; upgrade to experience the true full Pulsar Agents experience.</p>
@@ -173,8 +210,8 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
               </Tooltip>
             </TooltipProvider>
           }
-          
-          <div className='flex items-center gap-2'>
+
+          <div className='flex items-center gap-3'>
             {/* Show model selector inline if custom agents are disabled, otherwise show settings dropdown */}
             {!customAgentsEnabled || flagsLoading ? (
               <ModelSelector
@@ -200,7 +237,7 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
                 disabled={loading || (disabled && !isAgentRunning)}
               />
             )}
-            
+
             {/* Billing Modal */}
             <BillingModal
               open={billingModalOpen}
@@ -212,20 +249,12 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
               onTranscription={onTranscription}
               disabled={loading || (disabled && !isAgentRunning)}
             />
-            
+
             <Button
               type="submit"
               onClick={isAgentRunning && onStopAgent ? onStopAgent : onSubmit}
               size="sm"
-              className={cn(
-                'w-7 h-7 flex-shrink-0 self-end',
-                isAgentRunning ? 'bg-red-500 hover:bg-red-600' : '',
-                (!value.trim() && uploadedFiles.length === 0 && !isAgentRunning) ||
-                  loading ||
-                  (disabled && !isAgentRunning)
-                  ? 'opacity-50'
-                  : '',
-              )}
+              className={submitButtonClasses}
               disabled={
                 (!value.trim() && uploadedFiles.length === 0 && !isAgentRunning) ||
                 loading ||
@@ -244,7 +273,7 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
         </div>
         {subscriptionStatus === 'no_subscription' && !isLocalMode() &&
           <div className='sm:hidden absolute -bottom-8 left-0 right-0 flex justify-center'>
-            <p className='text-xs text-amber-500 px-2 py-1'>
+            <p className='text-xs text-amber-500 dark:text-amber-400 px-3 py-1.5 bg-amber-50 dark:bg-amber-900/20 rounded-full border border-amber-200 dark:border-amber-800 font-medium'>
               Upgrade for better performance
             </p>
           </div>

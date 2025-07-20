@@ -259,15 +259,15 @@ export function HeroSection() {
               <div className="relative z-10">
                 <div
                   className="flex items-center rounded-full border border-border bg-background/80 backdrop-blur px-4 shadow-lg transition-all duration-200 hover:border-secondary/50 focus-within:border-secondary/50 focus-within:shadow-[0_0_15px_rgba(var(--secondary),0.3)] stark-border dark:bg-black/50 light:bg-white/50 dark:focus-within:shadow-[0_0_20px_rgba(255,255,255,0.2)] light:focus-within:shadow-[0_0_20px_rgba(0,0,0,0.2)]">
-                  <Input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder={hero.inputPlaceholder}
-                    className="flex-1 h-12 md:h-14 rounded-full px-2 bg-transparent text-sm md:text-base py-2 dark:text-white dark:placeholder-white/60 light:text-black light:placeholder-black/60 border-none shadow-none focus-visible:border-none focus-visible:ring-0 focus-visible:shadow-none hover:border-none hover:shadow-none"
-                    disabled={isSubmitting}
-                  />
+                  <Input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
+                         onKeyDown={handleKeyDown} placeholder={hero.inputPlaceholder}
+                         className="flex-1 h-12 md:h-14 rounded-full m-5 p-5 bg-transparent text-sm
+                         md:text-base
+                         dark:text-white dark:placeholder-white/60
+                         light:text-black light:placeholder-black/60 border-none shadow-none
+                         focus-visible:border-none focus-visible:ring-0 focus-visible:shadow-none
+                         hover:border-none hover:shadow-none"
+                         disabled={isSubmitting}/>
 
                   <button
                     type="submit"
