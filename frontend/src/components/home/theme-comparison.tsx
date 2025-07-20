@@ -22,8 +22,8 @@ export function ThemeComparison() {
     <div className="min-h-screen w-full relative overflow-hidden">
       {/* Animated background grid */}
       <EnhancedDarkGrid 
-        pattern="tech-grid" 
-        intensity={0.1} 
+        pattern="cross"
+        intensity={0.1}
         animated={true}
         className="fixed inset-0"
       />
@@ -241,4 +241,4 @@ export function ThemeComparison() {
       </div>
     </div>
   );
-} 
+}
