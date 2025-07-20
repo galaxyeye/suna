@@ -8,13 +8,34 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
       type={type}
       data-slot="input"
       className={cn(
-        'file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input/60 dark:border-input/80 flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
-        // Enhanced focus and hover states for better visibility in both modes
-        'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-        'dark:focus-visible:border-white/60 dark:focus-visible:ring-white/30',
-        'focus-visible:border-black/80 focus-visible:ring-black/20',
-        'dark:hover:border-white/40 hover:border-black/60',
-        'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+        'file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground',
+        // 基础样式 - 增强背景对比度
+        'dark:bg-black/40 bg-white/80 backdrop-blur-sm',
+        'flex h-9 w-full min-w-0 rounded-md px-3 py-1 text-base transition-all duration-200 outline-none',
+        'file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium',
+        'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+
+        // 默认border - 高对比度
+        'border-2',
+        'dark:border-white/30 border-black/25',
+        'dark:shadow-[0_0_0_1px_rgba(255,255,255,0.1)] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]',
+
+        // Hover状态 - 更显目的高亮
+        'dark:hover:border-white/50 hover:border-black/40',
+        'dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_1px_rgba(0,0,0,0.2),0_0_10px_rgba(0,0,0,0.1)]',
+        'hover:scale-[1.01]',
+
+        // Focus状态 - 强烈的高亮效果
+        'focus-visible:border-4',
+        'dark:focus-visible:border-blue-400/80 focus-visible:border-blue-600/80',
+        'dark:focus-visible:shadow-[0_0_0_2px_rgba(59,130,246,0.4),0_0_20px_rgba(59,130,246,0.2)] focus-visible:shadow-[0_0_0_2px_rgba(37,99,235,0.4),0_0_20px_rgba(37,99,235,0.2)]',
+        'focus-visible:scale-[1.02]',
+
+        // 错误状态 - 高对比度红色
+        'aria-invalid:border-3',
+        'dark:aria-invalid:border-red-400/80 aria-invalid:border-red-600/80',
+        'dark:aria-invalid:shadow-[0_0_0_2px_rgba(248,113,113,0.4)] aria-invalid:shadow-[0_0_0_2px_rgba(220,38,38,0.4)]',
+
         className,
       )}
       {...props}

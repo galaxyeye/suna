@@ -1,62 +1,57 @@
 'use client';
-import { HeroVideoSection } from '@/components/home/sections/hero-video-section';
-import { siteConfig } from '@/lib/home';
-import { ArrowRight, Github, X, AlertCircle } from 'lucide-react';
-import { FlickeringGrid } from '@/components/home/ui/flickering-grid';
-import { useMediaQuery } from '@/hooks/use-media-query';
-import { useState, useEffect, useRef, FormEvent } from 'react';
-import { useScroll } from 'motion/react';
+import {siteConfig} from '@/lib/home';
+import {AlertCircle, ArrowRight} from 'lucide-react';
+import {useMediaQuery} from '@/hooks/use-media-query';
+import {FormEvent, useEffect, useRef, useState} from 'react';
+import {useScroll} from 'motion/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/components/AuthProvider';
-import {
-  BillingError,
-} from '@/lib/api';
-import { useInitiateAgentMutation } from '@/hooks/react-query/dashboard/use-initiate-agent';
-import { useThreadQuery } from '@/hooks/react-query/threads/use-threads';
-import { generateThreadName } from '@/lib/actions/threads';
+import {useRouter} from 'next/navigation';
+import {useAuth} from '@/components/AuthProvider';
+import {BillingError,} from '@/lib/api';
+import {useInitiateAgentMutation} from '@/hooks/react-query/dashboard/use-initiate-agent';
+import {useThreadQuery} from '@/hooks/react-query/threads/use-threads';
 import GoogleSignIn from '@/components/GoogleSignIn';
-import { Input } from '@/components/ui/input';
-import { SubmitButton } from '@/components/ui/submit-button';
+import {Input} from '@/components/ui/input';
+import {SubmitButton} from '@/components/ui/submit-button';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
   DialogOverlay,
+  DialogTitle,
 } from '@/components/ui/dialog';
-import { BillingErrorAlert } from '@/components/billing/usage-limit-alert';
-import { useBillingError } from '@/hooks/useBillingError';
-import { useAccounts } from '@/hooks/use-accounts';
-import { isLocalMode, config } from '@/lib/config';
-import { toast } from 'sonner';
-import { useModal } from '@/hooks/use-modal-store';
+import {BillingErrorAlert} from '@/components/billing/usage-limit-alert';
+import {useBillingError} from '@/hooks/useBillingError';
+import {useAccounts} from '@/hooks/use-accounts';
+import {isLocalMode} from '@/lib/config';
+import {toast} from 'sonner';
+import {useModal} from '@/hooks/use-modal-store';
 
 // Custom dialog overlay with blur effect
 const BlurredDialogOverlay = () => (
-  <DialogOverlay className="bg-background/40 backdrop-blur-md" />
+  <DialogOverlay className="bg-background/40 backdrop-blur-md"/>
 );
 
 // Constant for localStorage key to ensure consistency
 const PENDING_PROMPT_KEY = 'pendingAgentPrompt';
 
 export function HeroSection() {
-  const { hero } = siteConfig;
+  const {hero} = siteConfig;
   const tablet = useMediaQuery('(max-width: 1024px)');
   const [mounted, setMounted] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
-  const { scrollY } = useScroll();
+  const {scrollY} = useScroll();
   const [inputValue, setInputValue] = useState('');
   const router = useRouter();
-  const { user, isLoading } = useAuth();
-  const { billingError, handleBillingError, clearBillingError } =
+  const {user, isLoading} = useAuth();
+  const {billingError, handleBillingError, clearBillingError} =
     useBillingError();
-  const { data: accounts } = useAccounts();
+  const {data: accounts} = useAccounts();
   const personalAccount = accounts?.find((account) => account.personal_account);
-  const { onOpen } = useModal();
+  const {onOpen} = useModal();
   const initiateAgentMutation = useInitiateAgentMutation();
   const [initiatedThreadId, setInitiatedThreadId] = useState<string | null>(null);
   const threadQuery = useThreadQuery(initiatedThreadId || '');
@@ -124,7 +119,7 @@ export function HeroSection() {
     try {
       const formData = new FormData();
       formData.append('prompt', inputValue.trim());
-      formData.append('model_name', 'openrouter/deepseek/deepseek-chat'); 
+      formData.append('model_name', 'openrouter/deepseek/deepseek-chat');
       formData.append('enable_thinking', 'false');
       formData.append('reasoning_effort', 'low');
       formData.append('stream', 'true');
@@ -196,21 +191,22 @@ export function HeroSection() {
       // Call your authentication function here
 
       // Return any error state
-      return { message: 'Invalid credentials' };
+      return {message: 'Invalid credentials'};
     } catch (error) {
       console.error('Sign in error:', error);
       setAuthError(
         error instanceof Error ? error.message : 'An error occurred',
       );
-      return { message: 'An error occurred during sign in' };
+      return {message: 'An error occurred during sign in'};
     }
   };
 
   return (
     <section id="hero" className="w-full relative overflow-hidden bg-tech-grid">
       <div className="relative flex flex-col items-center w-full px-6">
-        
-        <div className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
+
+        <div
+          className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
           {/* <p className="border border-border bg-accent rounded-full text-sm h-8 px-3 flex items-center gap-2">
             {hero.badgeIcon}
             {hero.badge}
@@ -223,10 +219,12 @@ export function HeroSection() {
             className="group border border-border/50 bg-background hover:bg-accent/20 hover:border-secondary/40 btn-minimal rounded-full text-sm h-8 px-3 flex items-center gap-2 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
           >
             {hero.badgeIcon}
-            <span className="font-medium text-muted-foreground text-xs tracking-wide group-hover:text-primary transition-colors duration-300">
+            <span
+              className="font-medium text-muted-foreground text-xs tracking-wide group-hover:text-primary transition-colors duration-300">
               {hero.badge}
             </span>
-            <span className="inline-flex items-center justify-center size-3.5 rounded-full bg-muted/30 group-hover:bg-secondary/30 transition-colors duration-300">
+            <span
+              className="inline-flex items-center justify-center size-3.5 rounded-full bg-muted/30 group-hover:bg-secondary/30 transition-colors duration-300">
               <svg
                 width="8"
                 height="8"
@@ -245,29 +243,28 @@ export function HeroSection() {
               </svg>
             </span>
           </Link>
-                      <div className="flex flex-col items-center justify-center gap-5 content-spotlight">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-stark">
-                <span className="text-secondary dark:text-white light:text-black font-bold">Pulsar Agents</span>
-                <span className="text-primary dark:text-white/90 light:text-black/90">, your AI Employee.</span>
-              </h1>
-              <p className="text-base md:text-lg text-center text-muted-foreground text-minimal font-medium text-balance leading-relaxed tracking-tight">
-                {hero.description}
-              </p>
-            </div>
+          <div className="flex flex-col items-center justify-center gap-5 content-spotlight">
+            <h1
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-stark">
+              <span className="text-secondary dark:text-white light:text-black font-bold">Pulsar Agents</span>
+              <span className="text-primary dark:text-white/90 light:text-black/90">, your AI Employee.</span>
+            </h1>
+            <p
+              className="text-base md:text-lg text-center text-muted-foreground text-minimal font-medium text-balance leading-relaxed tracking-tight">
+              {hero.description}
+            </p>
+          </div>
           <div className="flex items-center w-full max-w-xl gap-2 flex-wrap justify-center">
             <form className="w-full relative" onSubmit={handleSubmit}>
               {/* ChatGPT-like input with glow effect */}
               <div className="relative z-10">
-                <div className="flex items-center rounded-full border border-border bg-background/80 backdrop-blur px-4 shadow-lg transition-all duration-200 hover:border-secondary/50 focus-within:border-secondary/50 focus-within:shadow-[0_0_15px_rgba(var(--secondary),0.3)] stark-border dark:bg-black/50 light:bg-white/50 dark:focus-within:shadow-[0_0_20px_rgba(255,255,255,0.2)] light:focus-within:shadow-[0_0_20px_rgba(0,0,0,0.2)]">
-                  <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder={hero.inputPlaceholder}
-                    className="flex-1 h-12 md:h-14 rounded-full px-2 bg-transparent focus:outline-none text-sm md:text-base py-2 dark:text-white dark:placeholder-white/60 light:text-black light:placeholder-black/60"
-                    disabled={isSubmitting}
-                  />
+                <div
+                  className="flex items-center rounded-full border border-border bg-background/80 backdrop-blur px-4 shadow-lg transition-all duration-200 hover:border-secondary/50 focus-within:border-secondary/50 focus-within:shadow-[0_0_15px_rgba(var(--secondary),0.3)] stark-border dark:bg-black/50 light:bg-white/50 dark:focus-within:shadow-[0_0_20px_rgba(255,255,255,0.2)] light:focus-within:shadow-[0_0_20px_rgba(0,0,0,0.2)]">
+                  <input type="text" value={inputValue}
+                         onChange={(e) => setInputValue(e.target.value)}
+                         onKeyDown={handleKeyDown} placeholder={hero.inputPlaceholder}
+                         className="flex-1 h-12 md:h-14 rounded-full px-2 bg-transparent focus:outline-none text-sm md:text-base py-2 dark:text-white dark:placeholder-white/60 light:text-black light:placeholder-black/60 border-2 border-transparent focus:border-primary/80 dark:focus:border-blue-400 light:focus:border-blue-600 transition-all duration-200"
+                         disabled={isSubmitting}/>
                   <button
                     type="submit"
                     className={`rounded-full p-2 md:p-3 transition-all duration-200 ${
@@ -279,15 +276,17 @@ export function HeroSection() {
                     aria-label="Submit"
                   >
                     {isSubmitting ? (
-                      <div className="h-4 md:h-5 w-4 md:w-5 border-2 border-secondary-foreground border-t-transparent rounded-full animate-spin" />
+                      <div
+                        className="h-4 md:h-5 w-4 md:w-5 border-2 border-secondary-foreground border-t-transparent rounded-full animate-spin"/>
                     ) : (
-                      <ArrowRight className="size-4 md:size-5" />
+                      <ArrowRight className="size-4 md:size-5"/>
                     )}
                   </button>
                 </div>
               </div>
               {/* Subtle glow effect */}
-              <div className="absolute -bottom-4 inset-x-0 h-6 bg-secondary/20 blur-xl rounded-full -z-10 opacity-70"></div>
+              <div
+                className="absolute -bottom-4 inset-x-0 h-6 bg-secondary/20 blur-xl rounded-full -z-10 opacity-70"></div>
             </form>
           </div>
         </div>
@@ -297,7 +296,7 @@ export function HeroSection() {
 
       {/* Auth Dialog */}
       <Dialog open={authDialogOpen} onOpenChange={setAuthDialogOpen}>
-        <BlurredDialogOverlay />
+        <BlurredDialogOverlay/>
         <DialogContent className="sm:max-w-md rounded-xl bg-[#F3F4F6] dark:bg-[#F9FAFB]/[0.02] border border-border">
           <DialogHeader>
             <div className="flex items-center justify-between">
@@ -318,15 +317,16 @@ export function HeroSection() {
 
           {/* Auth error message */}
           {authError && (
-            <div className="mb-4 p-3 rounded-lg flex items-center gap-3 bg-secondary/10 border border-secondary/20 text-secondary">
-              <AlertCircle className="h-5 w-5 flex-shrink-0 text-secondary" />
+            <div
+              className="mb-4 p-3 rounded-lg flex items-center gap-3 bg-secondary/10 border border-secondary/20 text-secondary">
+              <AlertCircle className="h-5 w-5 flex-shrink-0 text-secondary"/>
               <span className="text-sm font-medium">{authError}</span>
             </div>
           )}
 
           {/* Google Sign In */}
           <div className="w-full">
-            <GoogleSignIn returnUrl="/dashboard" />
+            <GoogleSignIn returnUrl="/dashboard"/>
           </div>
 
           {/* Divider */}
