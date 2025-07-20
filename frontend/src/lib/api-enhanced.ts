@@ -137,6 +137,7 @@ export const projectsApi = {
             name: projectData.name,
             description: projectData.description || null,
             account_id: accountId,
+            is_public: true // TODO: temporary public
           })
           .select()
           .single();
