@@ -1223,14 +1223,14 @@ export function FileViewerModal({
             {/* Navigation arrows for file list mode */}
             {(() => {
               // Debug logging
-              console.log('[FILE VIEWER DEBUG] Navigation visibility check:', {
-                isFileListMode,
-                selectedFilePath,
-                filePathList,
-                filePathListLength: filePathList?.length,
-                currentFileIndex,
-                shouldShow: isFileListMode && selectedFilePath && filePathList && filePathList.length > 1 && currentFileIndex >= 0
-              });
+              // console.debug('[FILE VIEWER DEBUG] Navigation visibility check:', {
+              //   isFileListMode,
+              //   selectedFilePath,
+              //   filePathList,
+              //   filePathListLength: filePathList?.length,
+              //   currentFileIndex,
+              //   shouldShow: isFileListMode && selectedFilePath && filePathList && filePathList.length > 1 && currentFileIndex >= 0
+              // });
 
               return isFileListMode && selectedFilePath && filePathList && filePathList.length > 1 && currentFileIndex >= 0;
             })() && (

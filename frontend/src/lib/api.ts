@@ -571,6 +571,7 @@ export const addUserMessage = async (
 
   if (error) {
     console.error('Error adding user message:', error);
+    console.log("Message: ", message)
     handleApiError(error, { operation: 'add message', resource: 'message' });
     throw new Error(`Error adding message: ${error.message}`);
   }

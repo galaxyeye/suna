@@ -292,6 +292,7 @@ export default function ThreadPage({
 
         if (results[0].status === 'rejected') {
           const reason = results[0].reason;
+          console.log("Failed to send message:", message);
           console.error("Failed to send message:", reason);
           throw new Error(`Failed to send message: ${reason?.message || reason}`);
         }

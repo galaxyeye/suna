@@ -2,6 +2,12 @@ import { withSentryConfig } from '@sentry/nextjs';
 import type { NextConfig } from 'next';
 
 let nextConfig: NextConfig = {
+  turbopack: {
+    // Turbopack configuration
+    resolveAlias: {
+      canvas: './empty-module.js',
+    },
+  },
   webpack: (config) => {
     // This rule prevents issues with pdf.js and canvas
     config.externals = [...(config.externals || []), { canvas: 'canvas' }];

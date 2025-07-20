@@ -323,6 +323,7 @@ export const AgentBuilderChat = React.memo(function AgentBuilderChat({
         const results = await Promise.allSettled([messagePromise, agentPromise]);
 
         if (results[0].status === 'rejected') {
+          console.log('[PREVIEW] Error sending message:', message);
           throw new Error(`Failed to send message: ${results[0].reason?.message || results[0].reason}`);
         }
         if (results[1].status === 'rejected') {

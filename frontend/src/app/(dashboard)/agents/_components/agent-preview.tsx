@@ -280,6 +280,7 @@ export const AgentPreview = ({ agent }: AgentPreviewProps) => {
         const results = await Promise.allSettled([messagePromise, agentPromise]);
 
         if (results[0].status === 'rejected') {
+          console.log("[PREVIEW] Error sending message:", message);
           throw new Error(`Failed to send message: ${results[0].reason?.message || results[0].reason}`);
         }
 
