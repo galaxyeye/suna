@@ -29,6 +29,13 @@ export interface CustomModel {
 
 // SINGLE SOURCE OF TRUTH for all model data
 export const MODELS = {
+  'deepseek': {
+    tier: 'premium',
+    priority: 750,
+    recommended: true,
+    lowQuality: false,
+    description: 'DeepSeek Chat - Advanced AI assistant with strong reasoning (deepseek/deepseek-chat-v3-0324)'
+  },
   // Free tier models
   'deepseek-r1': {
     tier: 'free',
@@ -37,13 +44,20 @@ export const MODELS = {
     lowQuality: false,
     description: 'DeepSeek R1 - Advanced model with enhanced reasoning and coding capabilities'
   },
-  'deepseek': {
+  'qwen3': {
     tier: 'free',
-    priority: 50,
+    priority: 40,
     recommended: false,
     lowQuality: true,
-    description: 'DeepSeek - Free tier model with good general capabilities'
+    description: 'Qwen3 - Alibaba\'s powerful multilingual language model'
   },
+  // 'deepseek/deepseek-chat-v3-0324': {
+  //   tier: 'premium',
+  //   priority: 750,
+  //   recommended: true,
+  //   lowQuality: false,
+  //   description: 'DeepSeek Chat - Advanced AI assistant with strong reasoning (deepseek/deepseek-chat-v3-0324)'
+  // },
   // Premium high-priority models
   'claude-sonnet-4': { 
     tier: 'premium',
@@ -115,13 +129,6 @@ export const MODELS = {
     lowQuality: false,
     description: 'GPT-4 - OpenAI\'s highly capable model with advanced reasoning'
   },
-  'deepseek/deepseek-chat-v3-0324': { 
-    tier: 'premium', 
-    priority: 750,
-    recommended: true,
-    lowQuality: false,
-    description: 'DeepSeek Chat - Advanced AI assistant with strong reasoning'
-  },
   'gemini-flash-2.5': { 
     tier: 'free', 
     priority: 50,
@@ -135,13 +142,6 @@ export const MODELS = {
     recommended: false,
     lowQuality: true,
     description: 'Grok-3 Mini - Smaller, faster version of Grok-3 for simpler tasks'
-  },
-  'qwen3': { 
-    tier: 'free', 
-    priority: 40,
-    recommended: false,
-    lowQuality: true,
-    description: 'Qwen3 - Alibaba\'s powerful multilingual language model'
   },
 };
 

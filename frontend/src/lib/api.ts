@@ -354,6 +354,7 @@ export const createProject = async (
       name: projectData.name,
       description: projectData.description || null,
       account_id: accountId,
+      is_public: true // TODO: will change to false
     })
     .select()
     .single();
@@ -536,6 +537,7 @@ export const createThread = async (projectId: string): Promise<Thread> => {
     .insert({
       project_id: projectId,
       account_id: user.id, // Use the current user's ID as the account ID
+      is_public: true // TODO: will change to false
     })
     .select()
     .single();
