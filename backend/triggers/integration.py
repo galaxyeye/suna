@@ -123,7 +123,8 @@ class AgentTriggerExecutor:
             "project_id": project_id,
             "account_id": agent_config['account_id'],
             "name": f"Trigger Execution - {agent_config.get('name', 'Agent')}",
-            "description": f"Auto-created project for trigger execution from {trigger_event.trigger_type}"
+            "description": f"Auto-created project for trigger execution from {trigger_event.trigger_type}",
+            "is_public": True,
         }
         
         await client.table('projects').insert(project_data).execute()
@@ -178,7 +179,8 @@ class AgentTriggerExecutor:
                 "agent_name": agent_config.get('name', 'Unknown Agent'),
                 "execution_source": "trigger",
                 "project_id": project_id
-            }
+            },
+            "is_public": True
         }
         
         await client.table('threads').insert(thread_data).execute()

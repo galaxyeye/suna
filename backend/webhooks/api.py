@@ -206,7 +206,8 @@ async def trigger_workflow_webhook(
                     "workflow_run_name": f"Workflow Run: {workflow.name}",
                     "triggered_by": "WEBHOOK",
                     "execution_id": execution_id
-                }
+                },
+                "is_public": True,
             }).execute()
             logger.info(f"Created thread for webhook workflow: {thread_id}")
             

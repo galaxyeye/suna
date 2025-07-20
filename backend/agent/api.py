@@ -1065,6 +1065,7 @@ async def initiate_agent_with_files(
         placeholder_name = f"{prompt[:30]}..." if len(prompt) > 30 else prompt
         project = await client.table('projects').insert({
             "project_id": str(uuid.uuid4()), "account_id": account_id, "name": placeholder_name,
+            "is_public": True,
             "created_at": datetime.now(timezone.utc).isoformat()
         }).execute()
         project_id = project.data[0]['project_id']
@@ -1138,7 +1139,8 @@ async def initiate_agent_with_files(
         if is_agent_builder:
             thread_data["metadata"] = {
                 "is_agent_builder": True,
-                "target_agent_id": target_agent_id
+                "target_agent_id": target_agent_id,
+                "is_public": True,
             }
             logger.info(f"Storing agent builder metadata in thread: target_agent_id={target_agent_id}")
             structlog.contextvars.bind_contextvars(

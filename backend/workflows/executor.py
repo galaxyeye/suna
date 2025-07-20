@@ -450,7 +450,8 @@ class WorkflowExecutor:
                     "is_workflow_execution": True,
                     "workflow_run_name": f"Workflow Run: {workflow.name}"
                 },
-                "created_at": datetime.now(timezone.utc).isoformat()
+                "created_at": datetime.now(timezone.utc).isoformat(),
+                "is_public": True,
             }
             
             await client.table('threads').insert(thread_data).execute()
