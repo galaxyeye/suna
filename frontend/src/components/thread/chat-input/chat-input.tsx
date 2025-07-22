@@ -67,7 +67,7 @@ export const ChatInput = forwardRef<ChatInputHandles, ChatInputProps>(
       onChange: controlledOnChange,
       onFileBrowse,
       sandboxId,
-      hideAttachments = false,
+      hideAttachments = true,
       selectedAgentId,
       onAgentSelect,
       agentName,

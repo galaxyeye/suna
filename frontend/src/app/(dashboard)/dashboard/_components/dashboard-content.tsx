@@ -206,9 +206,6 @@ export function DashboardContent() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[650px] max-w-[90%]">
           <div className="flex flex-col items-center text-center w-full">
             <div className="flex items-center gap-1">
-              <h1 className="tracking-tight text-4xl text-muted-foreground leading-tight">
-                Hey, I am
-              </h1>
               <h1 className="ml-1 tracking-tight text-4xl font-semibold leading-tight text-primary">
                 {displayName}
                 {agentAvatar && (
@@ -218,9 +215,6 @@ export function DashboardContent() {
                 )}
               </h1>
             </div>
-            <p className="tracking-tight text-3xl font-normal text-muted-foreground/80 mt-2">
-              What would you like to do today?
-            </p>
           </div>
           <div className={cn(
             "w-full mb-2",
@@ -234,7 +228,7 @@ export function DashboardContent() {
               placeholder="Describe what you need help with..."
               value={inputValue}
               onChange={setInputValue}
-              hideAttachments={false}
+              hideAttachments={true}
               selectedAgentId={selectedAgentId}
               onAgentSelect={setSelectedAgentId}
             />

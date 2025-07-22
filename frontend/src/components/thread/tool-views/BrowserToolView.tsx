@@ -418,7 +418,8 @@ export function BrowserToolView({
             </span>
           )}
         </div>
-        
+
+
         <div className="text-xs text-zinc-500 dark:text-zinc-400">
           {toolTimestamp && !isRunning
             ? formatTimestamp(toolTimestamp)

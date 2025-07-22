@@ -69,7 +69,7 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
       setPendingFiles,
       setUploadedFiles,
       setIsUploading,
-      hideAttachments = false,
+      hideAttachments = true,
       messages = [],
 
       selectedModel,
@@ -245,10 +245,10 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
               returnUrl={typeof window !== 'undefined' ? window.location.href : '/'}
             />
 
-            <VoiceRecorder
-              onTranscription={onTranscription}
-              disabled={loading || (disabled && !isAgentRunning)}
-            />
+            {/*<VoiceRecorder*/}
+            {/*  onTranscription={onTranscription}*/}
+            {/*  disabled={loading || (disabled && !isAgentRunning)}*/}
+            {/*/>*/}
 
             <Button
               type="submit"
