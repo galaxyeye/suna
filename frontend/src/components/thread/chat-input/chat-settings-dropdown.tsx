@@ -199,20 +199,20 @@ export const ChatSettingsDropdown: React.FC<ChatSettingsDropdownProps> = ({
         </TooltipProvider>
 
         <DropdownMenuContent align="end" className="w-80 p-0" sideOffset={4}>
-          <div className="p-3 border-b">
-            <div className="relative">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder="Search agents..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={handleSearchInputKeyDown}
-                className="w-full pl-8 pr-3 py-2 text-sm bg-transparent border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-              />
-            </div>
-          </div>
+          {/*<div className="p-3 border-b">*/}
+          {/*  <div className="relative">*/}
+          {/*    <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />*/}
+          {/*    <input*/}
+          {/*      ref={searchInputRef}*/}
+          {/*      type="text"*/}
+          {/*      placeholder="Search agents..."*/}
+          {/*      value={searchQuery}*/}
+          {/*      onChange={(e) => setSearchQuery(e.target.value)}*/}
+          {/*      onKeyDown={handleSearchInputKeyDown}*/}
+          {/*      className="w-full pl-8 pr-3 py-2 text-sm bg-transparent border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*</div>*/}
           <div className="max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
             {agentsLoading ? (
               <div className="p-3 text-sm text-muted-foreground text-center">
@@ -274,15 +274,15 @@ export const ChatSettingsDropdown: React.FC<ChatSettingsDropdownProps> = ({
           </div>
           <div className="border-t p-3">
             <div className="flex items-center justify-between">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleExploreAll}
-                className="text-xs"
-              >
-                <Search className="h-3 w-3" />
-                Explore All
-              </Button>
+              {/*<Button*/}
+              {/*  variant="outline"*/}
+              {/*  size="sm"*/}
+              {/*  onClick={handleExploreAll}*/}
+              {/*  className="text-xs"*/}
+              {/*>*/}
+              {/*  <Search className="h-3 w-3" />*/}
+              {/*  Explore All*/}
+              {/*</Button>*/}
               
               <Button
                 variant="outline"
