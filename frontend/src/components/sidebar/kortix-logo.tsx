@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 interface PlatonLogoProps {
   size?: number;
 }
-export function PlatonLogo({ size = 24 }: PlatonLogoProps) {
+export function PlatonLogo({ size = 22 }: PlatonLogoProps) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -19,7 +19,7 @@ export function PlatonLogo({ size = 24 }: PlatonLogoProps) {
   return (
     <Image
         src="/platon-logo.svg"
-        alt="Platon AI Team"
+        alt="Platon AI"
         width={size}
         height={size}
         className={`${mounted && theme === 'dark' ? 'invert' : ''} flex-shrink-0`}

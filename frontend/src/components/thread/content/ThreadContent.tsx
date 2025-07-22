@@ -315,7 +315,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
     debugMode = false,
     isPreviewMode = false,
     agentName = 'Pulsar Agents',
-    agentAvatar = <PlatonLogo size={16} />,
+    agentAvatar = <PlatonLogo size={65} />,
     emptyStateComponent,
 }) => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -623,7 +623,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                                                         </div>
                                                                     );
                                                                 }
-                                                                return <PlatonLogo size={16} />;
+                                                                return <PlatonLogo size={65} />;
                                                             })()}
                                                         </div>
                                                         <p className='ml-2 text-sm text-muted-foreground'>
