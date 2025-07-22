@@ -49,8 +49,8 @@ export function SidebarLeft({
 
   const pathname = usePathname();
   const { flags, loading: flagsLoading } = useFeatureFlags(['custom_agents', 'agent_marketplace', 'workflows']);
-  const customAgentsEnabled = flags.custom_agents;
-  const marketplaceEnabled = flags.agent_marketplace;
+  const customAgentsEnabled = false; // flags.custom_agents;
+  const marketplaceEnabled = false; // flags.agent_marketplace;
   const workflowsEnabled = flags.workflows;
 
   useEffect(() => {
@@ -99,7 +99,7 @@ export function SidebarLeft({
       <SidebarHeader className="px-2 py-2">
         <div className="flex h-[40px] items-center px-1 relative">
           <Link href="/dashboard">
-            <PlatonLogo />
+            <PlatonLogo size={200} />
           </Link>
           {state !== 'collapsed' && (
             <div className="ml-2 transition-all duration-200 ease-in-out whitespace-nowrap">
